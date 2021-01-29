@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "草稿箱",
+  "usingComponents": {
+    "production-pannel": "../../components/productionPannel/index"
+  }
+}

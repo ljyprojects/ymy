@@ -1,0 +1,59 @@
+/* pages/mine/mine.wxss */
+page {
+  color: #333;
+  background-color: #f6f6f6;
+}
+
+.head {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 20rpx 40rpx;
+}
+
+.head .avatar {
+  width: 100rpx;
+  border-radius: 50%;
+  overflow: hidden;
+
+}
+
+.head .avatar image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.head .nick_name {
+  flex: 1;
+  margin-left: 10px;
+  font-size: 30rpx;
+}
+
+.head .setting {
+  font-size: 26rpx;
+  color: #7788dd;
+}
+
+.menu_list .menu_list_group {
+  padding-top: 20rpx;
+}
+
+.menu_list .menu_list_group .menu_list_item {
+  padding: 20rpx 40rpx;
+  border-bottom: 1px solid #f3f3f3;
+  background-color: #fff;
+}
+
+.menu_list .menu_list_group .menu_list_item:last-child {
+  border-bottom: none;
+}
+
+.redDian {
+  width: 15rpx;
+  height: 15rpx;
+  background: red;
+  border-radius: 50%;
+  float: right;
+  margin-top: 17rpx;
+}

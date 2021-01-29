@@ -1,0 +1,212 @@
+/* pages/market/ReaddingPage.wxss */
+page {
+  background-color: #2f3336;
+}
+.btnview_msg{
+font-size: 24rpx;
+text-align: center;
+color: #576b95;
+}
+.record .btnview_msg,.next .btnview_msg{
+  margin-top: 10rpx;
+}
+.readding_page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.page_content scroll-view {
+  padding: 20rpx 40rpx;
+  width: 100%;
+  box-sizing: border-box;
+  line-height: 40px;
+  height: calc(100vh - 500rpx);
+  color: #cfcece;
+}
+
+.page_title {
+  color: #f6f6f6;
+  font-size: 38rpx;
+}
+
+.page_content scroll-view text {
+  font-size: 32rpx;
+  font-weight: 600;
+  font-family: '微软雅黑';
+}
+
+.record_pannel {
+  width: 100%;
+  flex: 1;
+  padding: 40rpx 20rpx;
+  box-shadow: 0 -1px 2px 1px #474747;
+  height: 200rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.record_pannel .timer {
+  text-align: center;
+  color: #cfcece;
+  font-size: 40rpx;
+  margin: 40rpx 0;
+}
+
+.record_pannel .timer.active {
+  color: #d51e07;
+}
+
+
+
+
+.btn_group {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.btn_group_item.center {
+  min-height: 180rpx;
+}
+
+.btn_group_item.record,
+.btn_group_item.next {
+  color: #576b95;
+}
+
+.btn_group_item.next {
+  font-size: 36rpx;
+  font-weight: 600;
+}
+
+.btn_group_item image {
+  width: 180rpx;
+  height: auto;
+  display: block;
+  margin: 0 40rpx;
+}
+
+.btn_group_item image.voice_play {
+  width: 120rpx;
+
+}
+
+.btn_group_item .icon-playIcon,
+.btn_group_item .icon-pauseIcon {
+  color: #bfbfbf;
+  font-size: 80rpx;
+}
+
+
+
+.bgm_page {
+  width: 100%;
+}
+
+.bgmBox {
+  width: 100%;
+  padding: 0 20rpx;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.bgmBox .bgmicon {
+  width: 60rpx;
+  height: 60rpx;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.bgmBox .bgmName {
+  margin-left: 40rpx;
+  color: #f6f6f6;
+  flex: 1;
+  text-align: right;
+  font-size: 24rpx;
+}
+
+.bgmBox .audition {
+  color: #f2f2f2;
+  padding: 0 20rpx;
+  height: 100%;
+  line-height: 90rpx;
+
+}
+
+.bgmBox .audition .icon-playIcon,
+.bgmBox .audition .icon-pauseIcon {
+  font-size: 60rpx;
+  color: #bfbfbf;
+}
+
+.bgmBox .audition .icon-pauseIcon {
+  color: #ff0011;
+}
+
+.bgmBox .bgmicon>image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.animation {
+  animation: turn 3s linear infinite;
+}
+
+@keyframes turn {
+  0% {
+    transform: rotate(0deg)
+  }
+
+  50% {
+    transform: rotate(180deg)
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.bgm_list_pannel {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, .5);
+  z-index: 5;
+}
+
+.bgm_list {
+  height: 50vh;
+  width: 100%;
+  background-color: #2f3336;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding-top: 20rpx;
+  box-shadow: 0 0 2px 2px rgb(99, 99, 99);
+  color: #f6f6f6;
+  overflow-y: auto;
+}
+
+.bgm_list_item {
+  padding: 20rpx 30rpx;
+  border-bottom: 1px solid #535353;
+}
+
+.bgm_list_item.select {
+  border: 1rpx solid #27b5b1;
+  color: #27b5b1
+}

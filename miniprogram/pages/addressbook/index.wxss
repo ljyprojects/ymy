@@ -1,0 +1,141 @@
+/* pages/warehouse/FansList.wxss */
+page {
+  background-color: #f6f6f6;
+  min-height: calc(100vh - 95rpx);
+}
+
+.fans_list_item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 60rpx 20rpx 20rpx;
+  background-color: #fff;
+  color: #333;
+  border-bottom: 1px solid #f6f6f6;
+}
+
+.fans_list_item:last-child {
+  border-bottom: none;
+}
+
+.fans_list_item_avatar image {
+  width: 80rpx;
+  height: auto;
+  display: block;
+  border-radius: 50%;
+}
+
+.userInfo {
+  flex: 1;
+  font-size: 28rpx;
+  padding: 0 20rpx;
+}
+
+.userInfo .fans_lsit_item_nick_name {
+  font-size: 28rpx;
+}
+
+.default_page {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 28rpx;
+}
+
+.fans_lsit_item_time {
+  font-size: 24rpx;
+  color: rgb(145, 144, 144);
+  margin-top: 16rpx;
+  text-align: center;
+}
+
+.fans_lsit_item_motto {
+  font-size: 24rpx;
+  color: #a7a7a7;
+  margin-top: 16rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.fans_list_item .btn {
+  font-size: 24rpx;
+  padding: 10rpx 20rpx;
+  background-color: #7788dd;
+  box-sizing: border-box;
+  color: #fff;
+  height: 50rpx;
+  display: flex;
+  align-items: center;
+  width: 140rpx;
+  justify-content: center;
+  border-radius: 450rpx;
+}
+
+/* 索引*/
+
+
+
+.list-warpper {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.member_list {
+  width: 100%;
+  overflow: scroll;
+}
+
+.list-scroll {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.list-title {
+  background: #f6f6f6;
+  color: #666;
+  font-size: 30rpx;
+  padding-left: 30rpx;
+}
+
+.list-right-wrapper {
+  position: fixed;
+  top: 50rpx;
+  right: 10rpx;
+  border-radius: 40rpx;
+  box-sizing: border-box;
+  z-index: 800;
+  height: calc(100vh - 200rpx);
+  overflow-y: auto;
+}
+
+.right-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0rpx 10rpx;
+  font-size: 26rpx;
+  color: rgb(102, 136, 247);
+}
+
+.index-tooltip {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  background: rgba(0, 0, 0, .7);
+  color: #fff;
+  font-size: 24px;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  text-align: center
+}

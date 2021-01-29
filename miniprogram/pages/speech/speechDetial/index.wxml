@@ -1,0 +1,163 @@
+<view class='detail' data-name="a" catchtap="showComment">
+
+  <view class="top-circle">
+    <view class="circle" style="width:100%;margin-top:0;">
+      <!-- 如果没有上传图片 -->
+      <view class="li-imgs" wx:if="{{wallData.images.length==0}}">
+        <view class="communityPage-li-img-none" style="width:100%;padding:0;">
+          <view class="communityPage-li-imgli-none" bindtap="audioPlay">
+            <view data-playState="pause" class="status_btn">
+              <image mode="widthFix" wx:if="{{!isPlay}}" catchtap="audioPlay"
+                src="https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/vioceIcon/play.png"></image>
+            </view>
+            <image src="https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/vioceIcon/backimg.jpg" mode="widthFix"
+              style="width:100%;"></image>
+          </view>
+          <view class="community-li-title-none">
+            {{wallData.content==''?wallData.userInfo.nickName+'的精彩分享':wallData.content}}</view>
+          <view class="community-li-title-time">{{wallData.time}}</view>
+          <view class="community-li-title-avatar">
+            <image src='{{wallData.userInfo.avatarUrl}}'></image>
+          </view>
+          <view class="community-li-title-name">{{wallData.userInfo.nickName}}</view>
+        </view>
+      </view>
+      <!-- 如果有上传图片 -->
+      <view class="li-imgs" style="width:100%;margin-top:0;" wx:if="{{wallData.images.length>0}}">
+        <swiper class="swiper" indicator-dots="{{wallData.images.lenght == 0 ? true : false}}">
+          <block wx:for="{{wallData.images}}" wx:key="index" wx:for-item="it">
+            <swiper-item>
+              <view data-playState="pause" class="status_btn" wx:if="{{!isPlay}}" catchtap="audioPlay">
+                <image mode="widthFix" src="https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/vioceIcon/play.png">
+                </image>
+              </view>
+              <image src="{{it}}" mode="aspectFill" style="height:422rpx;width:100%;" bindtap="audioPlay" />
+            </swiper-item>
+          </block>
+        </swiper>
+        <view class="uploadImg" wx:if="{{showPlay}}">
+          <image mode="aspectFit" style="width:120rpx;height:120rpx;" src="{{playImg}}"></image>
+        </view>
+
+      </view>
+      <slider wx:if="{{isPlay}}" class="slider" max="{{wallData.voiceLong / 1000}}" bindtouchstart="touchstart"
+        bindtouchend="touchend" bindchange="sliderChange" value="{{progressBar}}" backgroundColor="#F2F2F2"
+        block-size="12" backgroundColor="#f6f6f6" block-color="#27B5B1"></slider>
+    </view>
+    <view class="row">
+      <view class="content">{{wallData.content}} </view>
+      <view class="auth_pannel" wx:if="{{!chapterID}}">
+        <image class="userhead" catchtap="toAuth" src="{{wallData.userInfo.avatarUrl}}"></image>
+        <view class="col">
+          <view class="username" catchtap="toAuth" style="font-weight:600;">{{wallData.userInfo.nickName}}</view>
+        </view>
+        <view class="subscription_btn" wx:if="{{showFansBtn}}" bindtap="setFans">关注</view>
+      </view>
+      <view class="relevance" wx:if="{{chapterID}}">
+        <view class="course_auth">
+          <image mode="widthFix" src="{{wallData.courseInfo.userInfo.avatarUrl}}"></image>
+        </view>
+        <view class="course_title">{{wallData.courseInfo.title}}</view>
+        <navigator class="cousrse_jump_btn" hover-class="none"
+          url="{{'/pages/course/courseDetail?id='+wallData.courseID}}">进入课程
+        </navigator>
+      </view>
+
+      <view class='timeArea'>
+        <text>{{wallData.time}}</text>
+        <text bindtap="adminDelete" wx:if="{{isAdmin}}" class="timeArea-delete" data-id="{{wallData._id}}">删除</text>
+        <view class="sign_in_pannel">
+          <view class="poster_btn" wx:if="{{wallData.pageID&&!isAdmin}}" bindtap="toRead">跟读</view>
+        </view>
+      </view>
+    </view>
+
+
+  </view>
+  <view class="traffic_pannel" wx:if="{{showTrafficPannel}}">
+    <view class="traffic_pannel_title"><text>浏览</text><text class="traffic_num">{{wallData.traffic.length}}</text>
+    </view>
+    <view class="traffic_pannel_body" wx:if="{{wallData.trafficList.length}}">
+      <view class="traffic_list">
+        <image wx:for="{{wallData.trafficList}}" wx:key="_id" mode="widthFix" src="{{item.avatarUrl}}"></image>
+      </view>
+      <view class="traffic_pannel_more">
+        <image mode="widthFix" src="https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/systemIcon/more.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class="comm-zan" wx:if="{{false}}">
+    <!-- 点赞 -->
+    <view wx:if='{{wallData.trafficOfMembers.length>0}}'>
+      <view class="zan">
+        <image class="love-icon" mode="widthFix"
+          src="https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/systemIcon/heart.png"></image>
+        <view class="like">
+          <image mode="widthFix" wx:for="{{wallData.trafficOfMembers}}" wx:key="index" src="{{item.avatarUrl}}"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 评论 -->
+  <view class="comment" wx:if="{{showCommentPannel}}">
+    <view class="comment_title">评论({{wallData.comments.length||0}})</view>
+    <view class="comment_input_ui" wx:if="{{!showMore}}">
+      <view class="comment_avatar">
+        <image mode="widthFix" wx:if="{{userInfo}}" src="{{userInfo.avatarUrl}}"></image>
+        <view wx:else>
+          <open-data class="comment_avatar_url" type="userAvatarUrl"></open-data>
+        </view>
+      </view>
+      <view class="comment_input" catchtap="showComment" data-name="hidden">留下精彩评论</view>
+    </view>
+    <view class="comment-box" wx:for="{{wallData.comments}}" wx:key='index' catchtap="catchComment"
+      data-openid="{{item.openid}}" data-index="{{index}}" data-name="{{item.username}}">
+      <view class="comment-left">
+        <image mode="widthFix" src="{{item.avatarUrl}}"></image>
+      </view>
+      <view class="comment-right">
+        <view class="comment-name">{{item.username}}</view>
+        <block wx:if="{{item.toOpenid}}">
+          <view class="comment-details three">回复{{item.toName}}：{{item.comment}}
+            <view class="time">{{item.timeData}}</view>
+          </view>
+        </block>
+        <view wx:else class="comment-details three">{{item.comment}}
+          <view class="time">{{item.timeData}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="last"></view>
+  </view>
+  <view class="foot" wx:if="{{showBottomBar}}">
+    <block wx:if="{{!showMore}}">
+      <view class="foot-icon">
+        <view class="icon-box" catchtap="pageS">
+          <image mode="widthFix" catchtap="showComment" data-name="hidden"
+            src="https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/systemIcon/评论.png"></image>
+          <view class="num">{{wallData.comments.length}}</view>
+        </view>
+        <view class="icon-box" data-_id="{{wallData._id}}" catchtap="dianzan">
+          <image mode="widthFix" src="https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/systemIcon/点赞.png">
+          </image>
+          <view class="num">{{wallData.zans.length>=100?'99+':wallData.zans.length}}</view>
+        </view>
+        <view class="icon-box" wx:if="{{isAdmin&&collectionName=='chest'}}" bindtap="createPoster">
+          <image mode="widthFix" src="../../../images/icon/img.png">
+          </image>
+        </view>
+        <view class="icon-box">
+          <button open-type="share">
+            <image mode="widthFix" src="https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/systemIcon/转发.png"></image>
+          </button>
+        </view>
+      </view>
+    </block>
+    <view class="blur" data-name="show" catchtap='submitComment' wx:else>
+      <input class="blur-input" value="{{commentValue}}" focus="true" placeholder="{{placeholderPL}}"
+        bindinput="getcomment" data-name="upData" catchconfirm="submitComment"></input>
+      <view class="send" data-name="upData" catchtap="submitComment">发送</view>
+    </view>
+  </view>
+</view>
+<map-auth show="{{dialogShow}}" bindgetUserInfo="getUserInfo"></map-auth>

@@ -1,0 +1,44 @@
+<view class="member_list" wx:if="{{ members}}">
+  <!-- 外部搜索 -->
+  <view class='wrapper'>
+    <view class='list-warpper'>
+      <scroll-view class="list-scroll {{config.search?'top':''}}" scroll-y="true" scroll-into-view="{{config.letter}}"
+        scroll-with-animation="true">
+        <!-- 主体内容显示 -->
+        <view wx:for="{{members}}" wx:if="{{item.list.length}}" id="{{item.title}}" wx:key="index">
+          <view class='list-title fixed-title-hock'>{{item.title}}</view>
+          <view class="fans_list_item" catchtap="toSpace" data-appid="{{cityItem.userInfo.appid}}"
+            data-unionid="{{cityItem.userInfo.unionid}}" wx:for="{{item.list}}" wx:for-item="cityItem"
+            wx:for-index="idx" wx:key="cityItem">
+            <view class="fans_list_item_avatar">
+              <image mode="widthFix" src="{{cityItem.userInfo.avatarUrl}}"></image>
+            </view>
+            <view class="userInfo">
+              <view class="fans_lsit_item_nick_name">{{cityItem.userInfo.nickName}}</view>
+              <view class="fans_lsit_item_motto">{{cityItem.userInfo.motto}}</view>
+            </view>
+            <view>
+              <view class="btn" data-name="{{cityItem.userInfo.nickName}}" data-unionid="{{cityItem.userInfo.unionid}}"
+                data-appid="{cityItem.userInfo.appid}" catchtap="tochatRoom">私信</view>
+              <view class="fans_lsit_item_time">{{cityItem.time}}</view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+      <view class='list-right-wrapper' bindtouchstart="handlerTouchstart" bindtouchend="handlerTouchEnd">
+        <view class='right-item' wx:for="{{rightArr}}" wx:key="rightArr" data-letter="{{rightArr[index]}}"
+          bindtouchstart="jumpMtstart" bindtouchend="jumpMtEnd">
+          {{rightArr[index]}}
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--选择显示-->
+  <view hidden="{{config.hidden}}" class="index-tooltip">{{config.letter}}</view>
+</view>
+
+<view class="default_page" wx:else>发表您的内容收获更多粉丝吧~~~</view>
+<view class="tabbar">
+  <tabbar bindchange="tabChange" choose_index="{{choose_index}}"></tabbar>
+</view>
+<map-auth show="{{diaShow}}" bindgetUserInfo="getUserInfo" />

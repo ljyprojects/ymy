@@ -1,0 +1,12 @@
+<view class="fans_list" wx:if="{{MembersList.length}}">
+  <view class="fans_list_item" wx:for="{{MembersList}}" wx:key="_id" data-unionid="{{item.userInfo.unionid}}" data-appid="{{item.userInfo.appid}}" bindtap="toSpace">
+    <view class="fans_list_item_avatar">
+      <image mode="widthFix" src="{{item.userInfo.avatarUrl}}"></image>
+    </view>
+    <view class="fans_lsit_item_nick_name">{{item.userInfo.nickName}}</view>
+    <view class="fans_lsit_item_time">{{item.time}}</view>
+  </view>
+</view>
+<view class="default_page" wx:else>
+  暂无相关内容
+</view>

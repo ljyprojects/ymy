@@ -1,0 +1,68 @@
+<view class="submit_btn  {{hideSubmitBtn?'hide':''}}" wx:if="{{false}}">
+  <image mode="widthFix" class="submit_img" catchtap="updata"
+    src="https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/systemIcon/submit.png"></image>
+</view>
+<view class="cover">
+  <image mode="aspectFill" src="{{userInfo.bannerUrl||'https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/pgy.png'}}">
+  </image>
+</view>
+<view class="user_info_data">
+  <view class="avatar">
+    <view class="user_avatar">
+      <image mode="widthFix" wx:if="{{userInfo}}" src="{{userInfo.avatarUrl}}"></image>
+      <open-data type="userAvatarUrl" wx:else></open-data>
+    </view>
+    <view class="fans_page">
+      <view class="private_letter" catchtap="toChatRoom" wx:if="{{subscriptionMsg=='取消关注'}}">私信</view>
+      <view class="subscription" bindtap="setFans" wx:if="{{showMsg}}">{{subscriptionMsg}}</view>
+    </view>
+  </view>
+  <view class="user_info_content">
+    <view class="user_info_nick_name" wx:if="{{userInfo}}">{{userInfo.nickName}}</view>
+    <open-data class="user_info_nick_name" type="userNickName" wx:else></open-data>
+    <view class="motto"><text>{{userInfo.motto||'这个人很懒，什么都没留下~~'}}</text></view>
+    <view class="statistics">
+      <view class="statistics_item">
+        <text class="value">{{productionNum||0}}</text>
+        <text class=" msg">内容</text>
+      </view>
+      <view class="statistics_item">
+        <text class="value">{{userInfo.views?userInfo.views:0}}</text>
+        <text class=" msg">浏览</text>
+      </view>
+      <view class="statistics_item">
+        <view class="statistics_item_msg" bindtap="toViewsList">
+          <text class="value">{{userInfo.viewsOfMembersNum?userInfo.viewsOfMembersNum:0}}</text>
+          <text class=" msg">粉丝</text>
+        </view>
+      </view>
+      <view class="statistics_item">
+        <view class="statistics_item_msg" bindtap="toFansList">
+          <text class="value">{{userInfo.FansNum?userInfo.FansNum:0}}</text>
+          <text class=" msg">关注</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="top_tab" wx:if="{{showTab}}">
+  <i-tabs current="{{ current_scroll }}" scroll="{{tabSrcoll}}" bindchange="ChangeScroll">
+    <i-tab key="tab{{index}}" wx:for="{{ScrollTab}}" wx:key="index" title="{{item.name}}"></i-tab>
+  </i-tabs>
+</view>
+<view class="production_page">
+  <block wx:if="{{showSystemVideo}}">
+    <view class="system_video_pannel" wx:for="{{systemVideo}}" wx:key="_id">
+      <view class="title">{{item.title}}</view>
+      <view class="content">
+        <video id="systemVideo{{index+1}}" object-fit="cover" src="{{item.urlHttp}}"></video>
+      </view>
+    </view>
+  </block>
+  <production-pannel binddelete="deleteItem" wx:for="{{wallData}}" currentIndex="{{index}}" currentData="{{item}}"
+    isAdmin="{{isAdmin}}" wx:key="_id" bindPannelClick="pannelClick" />
+</view>
+
+
+<map-auth show="{{diaShow}}" bindgetUserInfo="getUserInfo" />

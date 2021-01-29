@@ -1,0 +1,25 @@
+<view class="speech_pannel">
+  <view class="speech_title"><text>{{speechData.content}}</text></view>
+  <view class="speech_cover">
+    <view class="speech_cover_img" wx:if="{{speechData.images.length}}">
+      <image mode="aspectFill" src="{{speechData.imagesHttp[0]}}"></image>
+      <view class="play_icon">
+        <image mode="widthFix" src="https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/vioceIcon/play.png"></image>
+      </view>
+    </view>
+    <view class="speech_cover_img" wx:else>
+      <image mode="aspectFill" src="https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/vioceIcon/backimg.jpg"></image>
+      <view class="play_icon">
+        <view class="play_icon_avatar">
+          <image mode="widthFix" src="{{speechData.userInfo.avatarUrl}}"></image>
+          <view class="play_icon_nick_name">{{speechData.userInfo.nickName}}</view>
+        </view>
+        <view class="play_icon_time">{{speechData.time}}</view>
+        <view class="play_icon_title">{{speechData.content}}</view>
+      </view>
+      <view class="play_icon">
+        <image mode="widthFix" src="https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/vioceIcon/play.png"></image>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,46 @@
+<view class="setting_page">
+  <view class="menu_list">
+    <view class="menu_list_item">
+      <view class="menu_list_item_title">头像</view>
+      <view class="menu_list_item_value" bindtap="chooseAvatarUrl">
+        <image class="avatar_url" mode="aspectFill" src="{{tempAvatarUrl||wallData.avatarUrl}}"></image>
+      </view>
+      <view class="menu_list_item_icon">
+        <i-icon type="enter" size="24" color="#80848f"></i-icon>
+      </view>
+    </view>
+    <view class="menu_list_item">
+      <view class="menu_list_item_title">封面图</view>
+      <view class="menu_list_item_value" bindtap="chooseBannerUrl">
+        <image class="avatar_url banner" mode="aspectFill" src="{{tempBannerUrl||wallData.bannerUrl}}"></image>
+      </view>
+      <view class="menu_list_item_icon">
+        <i-icon type="enter" size="24" color="#80848f"></i-icon>
+      </view>
+    </view>
+    <view class="menu_list_item">
+      <view class="menu_list_item_title">昵称</view>
+      <view class="menu_list_item_value">
+        <input bindinput="inputMsg" data-type="nickName" type="text" placeholder="请输入昵称"
+          value="{{wallData.nickName}}" />
+      </view>
+    </view>
+    <view class="menu_list_item">
+      <view class="menu_list_item_title">直播昵称</view>
+      <view class="menu_list_item_value">
+        <input bindinput="inputMsg" data-type="anchor_name" value="{{wallData.anchor_name}}" type="text"
+          placeholder="请输入昵称" value="{{wallData.anchor_name}}" />
+      </view>
+    </view>
+    <view class="menu_list_item motto">
+      <view class="menu_list_item_title">个性签名</view>
+      <view class="menu_list_item_value">
+        <textarea bindinput="inputMsg" data-type="motto" placeholder="输入您的个性签名" value="{{wallData.motto}}"></textarea>
+      </view>
+
+    </view>
+  </view>
+  <view class="btn_group">
+    <view class="btn_group_item" bindtap="submit">保存</view>
+  </view>
+</view>

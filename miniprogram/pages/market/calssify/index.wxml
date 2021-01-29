@@ -1,0 +1,27 @@
+<view class="classify_adit_page">
+	<view class="content_list" wx:for="{{classify}}" wx:key="_id">
+		<view class="content_name">{{item.name}}</view>
+		<view class="classify_list">
+			<view class="classify_item" wx:for="{{item.content}}" wx:for-index="indexN" wx:for-item="itemName" wx:key="indexN">
+				<view class="classify_name">{{itemName}}</view>
+				<view class="classify_edit_icon" data-typeIndex="{{index}}" data-contentIndex="{{indexN}}" catchtap="delClassify">
+					<image mode="widthFix" src="https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/systemIcon/close.png"></image>
+				</view>
+			</view>
+			<view class="classify_item last" catchtap="addClassify" data-typeindex="{{index}}">
+				<image mode="widthFix" src="https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/systemIcon/addg.png"></image>
+			</view>
+		</view>
+	</view>
+</view>
+<view class="form_page" wx:if="{{showForm}}">
+	<view class="form_box">
+		<view class="form_input">
+			<input maxlength="4" placeholder="请输入分类名称" bindinput="setClassifyValue" value="{{classifyValue}}"></input>
+		</view>
+		<view class="btn_group">
+			<view class="btn_cancel btn_group_item" data-type="cancel" catchtap="btnClick">取消</view>
+			<view class="btn_confirm btn_group_item" data-type="confirm" catchtap="btnClick">确定</view>
+		</view>
+	</view>
+</view>

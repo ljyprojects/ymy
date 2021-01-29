@@ -1,0 +1,135 @@
+<view class="page" wx:if="{{showPannel}}">
+	<view class="communityPage-li-swiper">
+		<swiper wx:if="{{tmpImgs.length>0}}" class="swiper" indicator-dots="{{false}}" style="height:422rpx;;width:100%;">
+			<block wx:for="{{tmpImgs}}" wx:key="index" wx:for-item="it">
+				<swiper-item>
+					<image src="{{it}}" mode="aspectFill" bindtap="showIncrease" style="height:422rpx;width:100%;" />
+				</swiper-item>
+			</block>
+		</swiper>
+		<swiper wx:elif="{{defaultImg}}" class="swiper" indicator-dots="{{false}}" style="height:422rpx;;width:100%;">
+			<block>
+				<swiper-item>
+					<image src="{{defaultImg}}" mode="aspectFill" bindtap="showIncrease" style="height:422rpx;width:100%;" />
+				</swiper-item>
+			</block>
+		</swiper>
+		<view wx:else class="default_pannel">
+			<view class="li-imgs">
+				<view class="communityPage-li-img-none" style="width:100%;padding:0;">
+					<view class="communityPage-li-imgli-none">
+
+						<image src="https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/vioceIcon/backimg.jpg" mode="widthFix"
+							style="width:100%;"></image>
+					</view>
+					<view class="community-li-title-none">{{title}}</view>
+
+					<view class="community-li-title-avatar">
+						<image src='{{userInfo.avatarUrl}}'></image>
+					</view>
+					<view class="community-li-title-name">{{userInfo.nickName}}</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="btn_group">
+		<view class="btn_group_item" catchtap="checkSysImgsPannel">换图</view>
+		<view class="btn_group_item" bindtap="chooseImage">从相册选择</view>
+	</view>
+	<view class="viewInput">
+		<textarea bindinput="onChange" placeholder-style="color:#333;" placeholder="请输入标题"></textarea>
+	</view>
+	<view class="system_imgs">
+		<view class="system_imgs_title" wx:if="{{showSystemImgPannel}}">选图推荐</view>
+		<view class="system_imgs_list" wx:if="{{showSystemImgPannel}}">
+			<view class="system_imgs_list_item {{index==selectImgIndex?'select':''}}" wx:for="{{systemImgs}}" wx:key="item"
+				catchtap="chooseDefaultImg" data-index="{{index}}">
+				<image id="img{{index}}" binderror='imgError' lazy-load mode="aspectFill" src="{{item}}"></image>
+			</view>
+		</view>
+	</view>
+	<view class="pannel">
+		<view class="location_pannel">
+			<view class="location_pannel_title">
+				<image mode="widthFix" src="https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/systemIcon/location.png"></image>
+			</view>
+			<view class="location_pannel_value">{{locationMsg}}</view>
+		</view>
+		<view class="create_poster_pannel">
+			<view class="check_box" bindtap="radioChange">
+				<radio color="#6e6e6e" value="poster" checked="{{isCreatePoster}}" />
+			</view>
+			<view class="check_value">生成海报</view>
+		</view>
+	</view>
+
+
+	<view class="btn_group submit_pannel">
+		<view class="cancel">
+			<button catchtap="subOk" data-type="draft">草稿</button>
+		</view>
+		<view class="submit">
+			<button type="primary" catchtap="subOk" data-type="submit">发表</button>
+		</view>
+	</view>
+</view>
+
+
+<view class="recommend_list" wx:if="{{recomList&&recomList.length}}">
+	<view class="recommend_list_body">
+		<view class="recommend_item" wx:for="{{recomList}}" wx:key="_id" data-id="{{item._id}}" catchtap="toReadding">
+			<view class="title">{{item.title}}</view>
+			<view class="content">{{item.content}}</view>
+		</view>
+		<view class="recommend_item" catchtap="toMarket">
+			<image class="more" mode="widthFix" src="https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/systemIcon/Right-11.png">
+			</image>
+		</view>
+	</view>
+</view>
+<view class="bottom_pannel">
+	<view class="bgmBox">
+		<view class="bgmicon {{audition?'animation':''}}" catchtap="display">
+			<image mode="widthFix" src="https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/fileicon/音乐.png"></image>
+		</view>
+	</view>
+	<view class="speak-style">
+		<text wx:if="{{isplay}}">{{currentDuration}}-</text>
+		<text>{{recordingDuration}}</text>
+	</view>
+	<view class="btnview">
+		<view class="record_btn" wx:if="{{tmpVoice}}">
+			<image wx:if="{{!isplay}}" bindtap="playVoice" style="width:80rpx;height:80rpx;" src="../../../images/play.png">
+			</image>
+			<image wx:if="{{isplay}}" bindtap="pauseVoice" style="width:80rpx;height:80rpx;" src="../../../images/stop1.png">
+			</image>
+			<view class="btnview_msg">{{isplay?'暂停':'试听'}}</view>
+		</view>
+		<view class="btnImg">
+			<view>
+				<image bindtap="startRecord" wx:if="{{!recordImg}}" style="width:180rpx;height:180rpx;"
+					src='../../../images/record.png'>
+				</image>
+				<image bindtap="stopRecord" wx:if="{{recordImg}}" style="width:180rpx;height:180rpx;"
+					src='../../../images/stop.png'>
+				</image>
+			</view>
+			<view class="btnview_msg">{{tmpVoice?'重录':recordImg?'停止':'录音'}}</view>
+		</view>
+		<view class="next_btn" wx:if="{{tmpVoice}}">
+			<image bindtap="showPannel" style="width:80rpx;height:80rpx;" src="../../../images/ok1.png"></image>
+			<view class="btnview_msg">保存</view>
+		</view>
+	</view>
+
+</view>
+<view class="half" style="{{display==true?'display:block':'display:none'}}">
+	<view class="black" catchtap="display">
+	</view>
+	<view class="list">
+		<view class="item" data-title="" data-bgm="" data-index="" catchtap="chose">
+			无需背景音乐</view>
+		<view wx:for="{{BGM}}" wx:key="index" class="item {{index==subscript ? 'chose' : ''}}" data-title="{{item.title}}"
+			data-bgm="{{item.bgmHttp}}" data-index="{{index}}" catchtap="chose">{{item.title}}</view>
+	</view>
+</view>

@@ -1,0 +1,12 @@
+<view class="market_foot_menu">
+	<scroll-view scroll-x="{{false}}">
+		<view class="market_foot_menu_list" style="width:{{footMenuWidth+'vw'}}">
+			<view class="market_foot_menu_item" style="width:{{footMenuItemWidth+'vw'}}" wx:for="{{footMenu}}" wx:key="index" data-index="{{index}}" bindtap="switchTab">
+				<view class="market_foot_menu_item_icon">
+					<image mode="widthFix" src="{{selectIndex==index?item.iconSelect:item.icon}}"></image>
+				</view>
+				<view class="market_foot_menu_item_name {{selectIndex==index?'select':''}}">{{item.name}}</view>
+			</view>
+		</view>
+	</scroll-view>
+</view>

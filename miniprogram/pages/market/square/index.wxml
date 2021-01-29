@@ -1,0 +1,160 @@
+<!--pages/market/index.wxml-->
+<view class="market_page">
+
+<view class="submit_btn  {{hideSubmitBtn?'hide':''}}" style="{{showPinLun?'display:none':''}}"
+  wx:if="{{totalAdmin||Admin }}" hidden="{{selectIndex==5}}">
+  <image mode="widthFix" class="submit_img" catchtap="toEdit"
+    src="https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/systemIcon/submit.png"></image>
+</view>
+
+<view class="market_body">
+  <view class="top_tab" wx:if="{{ScrollTab.length>1}}">
+    <i-tabs current="{{ current_scroll }}" scroll bindchange="handleChangeScroll">
+      <i-tab key="tab{{index}}" wx:for="{{ScrollTab}}" wx:key="item" title="{{item}}"></i-tab>
+    </i-tabs>
+  </view>
+  <view class="top-circle" wx:if="{{wallData.length&&!isLoading}}">
+    <view class="circle" wx:for="{{wallData}}" wx:key="index" wx:for-item="itemName" wx:for-index="indexN">
+      <view class="row" wx:if="{{itemName.type=='video'}}">
+        <view class="col">
+          <view class="content" data-text="{{itemName.content}}">
+            <text>{{itemName.content}}</text>
+          </view>
+          <view class="li-imgs">
+            <video show-fullscreen-btn="{{false}}" object-fit="cover" src="{{itemName.video.filePath}}"></video>
+          </view>
+          <view class='timeArea'>
+            <text>{{itemName.showTime}}</text>
+            <text wx:if="{{totalAdmin||Admin}}" catchtap="removeData" data-index="{{indexN}}" data-item='{{itemName}}'
+              class="admin-delete">删除</text>
+            <view class='sync_file'><text data-item="{{itemName}}" data-index="{{indexN}}"
+                catchtap="synchronous">同步</text></view>
+          </view>
+        </view>
+      </view>
+      <view class="row" wx:if="{{itemName.type=='article'}}">
+        <view class="col">
+          <view class="article" wx:if='{{itemName.article}}' catchtap="lookArticle"
+            data-url="{{itemName.article.url}}">
+            <view class="msg_cover-imagebox">
+              <image class="msg_cover" mode="aspectFill" src="{{itemName.article.msg_cover}}"></image>
+            </view>
+            <text class="article-title" style="barckground:white;">{{itemName.article.title}}</text>
+          </view>
+          <view class='timeArea'>
+            <text>{{itemName.showTime}}</text>
+            <text wx:if="{{totalAdmin||Admin}}" catchtap="removeData" data-index="{{indexN}}" data-item='{{itemName}}'
+              class="admin-delete">删除</text>
+            <view class='sync_file'><text data-item="{{itemName}}" data-index="{{indexN}}"
+                catchtap="synchronous">同步</text></view>
+          </view>
+        </view>
+      </view>
+      <view class="list" wx:if="{{itemName.type=='file'}}">
+        <view class="item" wx:key="index">
+          <view class="content">
+            <view class="doc" data-file="{{itemName.file}}" catchtap="download" data-name="{{itemName.name}}">
+              <view class="img">
+                <image src="{{itemName.icon}}"></image>
+              </view>
+              <view class="title">{{itemName.fileName}}</view>
+            </view>
+            <view class="timebox">
+              <view class="time">{{itemName.showTime}}</view>
+              <text class="time color" wx:if="{{totalAdmin||Admin}}" data-item='{{itemName}}' catchtap="removeData"
+                data-index="{{indexN}}">删除</text>
+              <text class="txt download" data-file="{{itemName.file}}" catchtap="copyLoad">复制链接</text>
+
+              <view class='sync_file'><text data-item="{{itemName}}" data-index="{{indexN}}"
+                  catchtap="synchronous">同步</text></view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="row" wx:if="{{itemName.type=='read'}}">
+        <view class="read_title">{{itemName.title}}</view>
+        <view class="read_content">
+          <text>{{itemName.content}}</text>
+        </view>
+        <view class='timeArea'>
+          <view class="timeArea_time">{{itemName.showTime}}</view>
+          <view class="time color" wx:if="{{totalAdmin||Admin}}" data-index="{{indexN}}" data-item='{{itemName}}'
+            catchtap="removeData">删除</view>
+          <view class='sync_file'>
+            <image data-index="{{indexN}}" catchtap="readdingPage" mode="widthFix" style="width:40rpx;height:auto" src="../../../images/麦克风.png"></image>
+          </view>
+        </view>
+      </view>
+      <view class="list" wx:if="{{itemName.type=='essay'}}">
+        <view class="item">
+          <view class="col" data-id="{{itemName._id}}" data-name="{{itemName.type}}" catchtap="essayDetail">
+            <view class="doc_list_item">
+              <view class="doc_list_item_icon">
+                <image mode="widthFix" src="https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/fileicon/word.png">
+                </image>
+              </view>
+              <view class="doc_list_item_title">{{itemName.title}}</view>
+            </view>
+            <view class="timebox">
+              <view class="time">{{itemName.showTime}}</view>
+              <text class="time color" data-item='{{itemName}}' data-index="{{indexN}}" catchtap="removeData"
+                wx:if="{{totalAdmin||Admin}}">删除</text>
+              <text class="txt synchronous" data-item="{{itemName}}" catchtap="synchronous"
+                data-index="{{indexN}}">同步</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{!wallData.length&&!isLoading}}" class="default">
+    <image mode="widthFix" src="https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/iconBox/noData.png"></image>
+    <view class="default_text">没有相关数据</view>
+  </view>
+</view>
+
+</view>
+
+<block wx:if="{{false}}">
+<include src="/template/marketFootMenu/marketFootMenu.wxml"></include>
+</block>
+<!-- 授权框 -->
+<mp-auth show="{{dialogShow}}" catchgetUserInfo="getUserInfo"></mp-auth>
+<view class="half" style="{{half?'':'display:none'}}" catchtap="half">
+
+<view class="send" catchtap="send">
+  同步
+</view>
+<view class="list" catchtap="a">
+  <view class="list-item" wx:for="{{CustomMenu}}" wx:key="name" data-index="{{index}}" catchtap="setCustomMenu">
+    <view class="img">
+      <image src="https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/weixin.png"></image>
+    </view>
+    <view class="content">
+      <view class="name">{{item.name}}</view>
+    </view>
+    <view class="checkbox">
+      <image
+        src="{{item.checked?'https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/fileicon/chose1.png':'https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/fileicon/chose.png'}}">
+      </image>
+
+    </view>
+  </view>
+
+  <view class="list-item" wx:for="{{groupList}}" data-id="{{item.openGid}}" wx:key="index">
+    <view class="img">
+      <image src="https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/weixin.png"></image>
+    </view>
+    <view class="content">
+      <view class="name" wx:if="{{!item.isAddQun}}">{{item.qunName}}</view>
+      <open-data class="name" wx:if="{{item.isAddQun}}" type="groupName" open-gid="{{item.openGid}}"></open-data>
+    </view>
+    <view class="checkbox" data-id="{{item.openGid}}" data-index="{{index}}" catchtap="checkbox">
+      <image wx:if="{{item.checked == false}}"
+        src="https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/fileicon/chose.png"></image>
+      <image wx:if="{{item.checked}}" src="https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/fileicon/chose1.png">
+      </image>
+    </view>
+  </view>
+</view>
+</view>

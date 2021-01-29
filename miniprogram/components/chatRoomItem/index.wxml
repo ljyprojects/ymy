@@ -1,0 +1,34 @@
+<!--components/chatRoomchatItem/index.wxml-->
+<view class="chat_room_chatItem">
+  <view
+      id="chatItem-{{index}}"
+      class="message {{unionid == chatItem.unionid ? 'message__self' : ''}}"
+    >
+      <image 
+        class="avatar"
+        src="{{chatItem.avatar}}"
+        mode="scaleToFill"
+      ></image> 
+      <view class="main">
+        <view class="nickname">{{chatItem.nickName}}</view>
+        <block wx:if="{{chatItem.msgType === 'image'}}">
+          <view class="image-wrapper">
+            <view class="loading" wx:if="{{chatItem.writeStatus > -1}}">{{chatItem.writeStatus}}%</view>
+            <image 
+              src="{{chatItem.tempFilePath || chatItem.imgHttp}}" 
+              data-fileid="{{chatItem.tempFilePath || chatItem.imgHttp}}" 
+              class="image-content" 
+              style="{{chatItem.imgStyle}}"
+              mode="aspectFill" 
+              bindtap="onMessageImageTap"></image>
+          </view>
+        </block>
+        <block wx:else>
+          <view class="text-wrapper">
+            <view class="loading" wx:if="{{chatItem.writeStatus === 'pending'}}">···</view>
+            <view class="text-content">{{chatItem.textContent}}</view>
+          </view>
+        </block>
+      </view>
+    </view>
+</view>

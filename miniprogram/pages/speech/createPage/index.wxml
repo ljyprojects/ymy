@@ -1,0 +1,35 @@
+<!--pages/market/createReadPage.wxml-->
+<view class="create_read_page">
+  <view class="list">
+    <view class="list_item">
+      <view class="list_item_body">
+        <view class="list_item_body_title">标题</view>
+        <view class="list_item_body_value">
+          <input type="text" value="{{readPage.title}}" bindinput="setTitle" placeholder="请输入标题" />
+        </view>
+      </view>
+    </view>
+    <view class="list_item">
+      <view class="list_item_body">
+        <view class="list_item_body_title">内容</view>
+        <view class="list_item_body_value">
+        </view>
+      </view>
+      <view class="list_item_sub_menu">
+        <textarea value="{{readPage.content}}" maxlength="-1" bindinput="setContent"
+          placeholder="请输入朗读内容..."></textarea>
+      </view>
+      <view class="list_item_sub_menu">
+        <view class="classify_list_title">分类</view>
+        <view class="classify_list">
+          <view class="classify_list_item {{readPage.tab==item?'select':''}}" bindtap="chooseTag" data-tag="{{item}}" wx:for="{{classifyList}}"
+            wx:key="item">{{item}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="btn_group">
+    <view class="btn_group_item confirm" data-type="confirm" bindtap="btnClick">提交</view>
+    <view class="btn_group_item" data-type="cancel" bindtap="btnClick">重置</view>
+  </view>
+</view>

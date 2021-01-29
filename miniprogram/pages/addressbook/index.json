@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "i-index": "../../components/index/index",
+    "i-index-item": "../../components/index-item/index",
+    "map-auth": "../../components/auth/dialog",
+    "tabbar": "../../components/tabbar/tabbar"
+  }
+}

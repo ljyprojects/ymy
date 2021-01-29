@@ -1,0 +1,16 @@
+/* pages/EshonTest/index.wxss */
+.cutImage {
+  position: fixed;
+  z-index: 20;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cutImage .btn {
+  color: #00b26a;
+}

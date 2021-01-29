@@ -1,0 +1,127 @@
+/* pages/market/classify.wxss */
+.classify_adit_page {
+  padding: 20rpx 0;
+}
+
+.content_name {
+  padding: 10rpx 40rpx;
+  font-size: 26rpx;
+}
+
+.classify_list {
+  background-color: #fff;
+  padding: 20rpx 20rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.classify_item {
+  margin: 16rpx;
+  width: 200rpx;
+  color: #333;
+  text-align: center;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 6rpx 16rpx;
+  border: 1px solid rgb(187, 185, 185);
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+}
+
+.classify_name {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.classify_item.last image {
+  width: 60rpx;
+  margin: 0 auto;
+  display: block;
+}
+
+.classify_edit_icon {
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  background-color: #fff;
+  top: 0;
+  right: 0;
+}
+
+.classify_edit_icon image {
+  width: 100%;
+  height: auto;
+  display: block;
+
+}
+
+.form_page {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background-color: rgba(0, 0, 0, .3);
+  z-index: 1;
+}
+
+.form_box {
+  background-color: #fff;
+  padding: 40rpx;
+  height: 260rpx;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  box-sizing: border-box;
+}
+
+.form_input input {
+  padding: 10rpx 20rpx;
+  font-size: 28rpx;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  height: 80rpx;
+  line-height: 80rpx;
+  box-sizing: border-box;
+}
+
+.form_box .btn_group {
+  display: flex;
+  padding: 0 50rpx;
+  margin-top: 30rpx;
+}
+
+.form_box .btn_group .btn_group_item {
+  flex: 1;
+  margin: 0 50rpx;
+  text-align: center;
+  padding: 10rpx 20rpx;
+  font-size: 30rpx;
+  border-radius: 4px;
+  height: 70rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn_group_item.btn_cancel {
+  background-color: rgb(218, 216, 216);
+  color: #e60d1b;
+}
+
+.btn_group_item.btn_confirm {
+  background-color: #00b26a;
+  color: #fff;
+}

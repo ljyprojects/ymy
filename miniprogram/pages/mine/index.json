@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "map-auth": "../../components/auth/dialog",
+    "tabbar": "../../../components/tabbar/tabbar"
+  }
+}

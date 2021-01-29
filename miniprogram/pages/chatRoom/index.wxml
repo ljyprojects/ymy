@@ -1,0 +1,11 @@
+<view id="chat-room" class="chat_room_page">
+  <chat-room-item wx:for="{{chatList}}" chatItem="{{item}}" unionid="{{myUnionid}}" wx:key="_id"/>
+</view>
+<view class="footer">
+  <view class="message-sender">
+    <input class="text-input" type="text" confirm-type="send" bindconfirm="onConfirmSendText" cursor-spacing="20"
+      value="{{textInputValue}}"></input>
+    <image src="../../images/chatroom/photo.png" class="btn-send-image" mode="scaleToFill" bindtap="onChooseImage">
+    </image>
+  </view>
+</view>

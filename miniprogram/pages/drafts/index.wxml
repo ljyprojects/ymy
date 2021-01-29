@@ -1,0 +1,5 @@
+<view class="drafts_list" wx:if="{{draftsList&&draftsList.length}}">
+  <production-pannel binddelete="deleteItem" wx:for="{{draftsList}}" currentData="{{item}}" isAdmin="{{true}}"
+    wx:key="_id" bindPannelClick="pannelClick" showAsyncBtn="{{true}}" bindAsynClick="AsynClick" />
+</view>
+<view class="default_page" wx:if="{{(!draftsList||!draftsList.length)&&!isLoading}}">空空如也~~~</view>

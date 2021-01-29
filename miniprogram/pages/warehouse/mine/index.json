@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "i-tabs": "../../../components/tabs/index",
+    "i-tab": "../../../components/tab/index",
+    "map-auth": "../../../components/auth/dialog",
+    "tabbar": "../../../components/tabbar/tabbar",
+    "production-pannel": "../../../components/productionPannel/index"
+  }
+}

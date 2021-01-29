@@ -1,0 +1,12 @@
+<!--pages/EshonTest/index.wxml-->
+<view class="cut_iamge">
+  <image-cropper id="image-cropper" limit_move="{{true}}" disable_rotate="{{true}}" width="{{width}}"
+    height="{{height}}" imgSrc="{{src}}" bindload="cropperload" bindimageload="loadimage" bindtapcut="clickcut"
+    min_width="{{openType=='avatar'?200:300}}" min_height="{{openType=='avatar'?200:150}}"
+    max_width="{{openType=='avatar'?200:300}}" max_height="{{openType=='avatar'?200:150}}">
+  </image-cropper>
+</view>
+
+<view class="cutImage">
+  <view class="btn" catchtap="getImg">裁剪</view>
+</view>

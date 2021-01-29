@@ -1,0 +1,14 @@
+<!--pages/course/posterPage.wxml-->
+<view class="poster_page" wx:if="{{showCanvas}}">
+	<canvas wx:if="{{showCanvas}}" canvas-id="canvas" bindtap="lookPoter" style="{{'width:'+poster.width*2+'px;height:'+poster.height*2+'px; '}}">
+	</canvas>
+</view>
+<view class="image_page" wx:if="{{canvasImage}}">
+	<image bindload="imageLoad"  mode="widthFix"  show-menu-by-longpress src="{{canvasImage}}" bindtap="lookPoter">
+	</image>
+	<view class="btn_group">
+		<view class="btn_item" bindtap="toWareHouse">返回</view>
+		<view class="btn" bindtap="saveImage">保存图片</view>
+	</view>
+	
+</view>

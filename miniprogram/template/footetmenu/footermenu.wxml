@@ -1,0 +1,20 @@
+<scroll-view class="scroll-view" enable-flex="true" scroll-x="true">
+	<view class="bar">
+		<navigator class="nav {{route!='more'||'active'}}" hoverClass="none" openType="reLaunch" url="/pages/community/more/more?openGid={{openGid}}&isAddQun={{isAddQun}}">
+			<image class="icon" src="{{route=='more'?'https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/navigationIcon/quan1.png':'https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/navigationIcon/quan.png'}}"></image>
+			<text class="label">群动态</text>
+		</navigator>
+		<navigator class="nav {{route!='remind'||'active'}}" hoverClass="none" openType="reLaunch" url="/pages/remind/remind?openGid={{openGid}}&isAddQun={{isAddQun}}">
+			<image class="icon" src="{{route=='remind'?'https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/navigationIcon/note_red.png':'https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/navigationIcon/note.png'}}"></image>
+			<text class="label">群消息</text>
+		</navigator>
+		<navigator class="nav {{route!='linkman'||'active'}}" hoverClass="none" openType="reLaunch" url="/pages/community/connunityMemberList?openGid={{openGid}}&isAddQun={{isAddQun}}">
+			<image class="icon" src="{{route=='linkman'?'https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/navigationIcon/addressbook1.png':'https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/navigationIcon/addressbook.png'}}"></image>
+			<text class="label">群友录</text>
+		</navigator>
+		<navigator class="nav {{route!='mine'||'active'}}" hoverClass="none" openType="reLaunch" url="/pages/mine/mineOfGroup?openid={{userInfo.openid}}&openGid={{openGid}}">
+			<image class="icon" src="{{route=='mine'?'https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/navigationIcon/mine1.png':'https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/navigationIcon/mine.png'}}"></image>
+			<text class="label">我的</text>
+		</navigator>
+	</view>
+</scroll-view>

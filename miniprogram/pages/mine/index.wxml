@@ -1,0 +1,44 @@
+<view class="mine_pege">
+	<view class="head" wx:if="{{userInfo}}">
+		<view class="avatar">
+			<image mode="widthFix" src="{{userInfo.avatarUrl}}"></image>
+		</view>
+		<view class="nick_name">{{userInfo.nickName}}</view>
+		<view class="setting" bindtap="toPage"
+			data-url="{{'/pages/mine/setting/index?unionid='+userInfo.unionid+'&appid='+userInfo.appid}}">编辑资料
+		</view>
+	</view>
+	<view class="head" bindtap="login" wx:else>
+		<view class="avatar">
+			<image mode="widthFix" src="https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/navigationIcon/cry-220.png"></image>
+		</view>
+		<view class="nick_name">点击登录</view>
+	</view>
+	<view class="menu_list" wx:if="{{userInfo}}">
+		<view class="menu_list_group" wx:if="{{isAdministrator}}">
+			<view class="menu_list_item" bindtap="toPage" data-url="/pages/market/square/index" bindtap="toPage">素材库</view>
+		</view>
+		<view class="menu_list_group" wx:if="{{isAdministrator}}" data-url="/pages/market/calssify/index" bindtap="toPage">
+			<view class="menu_list_item">分类管理</view>
+		</view>
+		<view class="menu_list_group"
+			data-url="{{'/pages/warehouse/FansList/index?unionid='+userInfo.unionid+'&appid='+userInfo.appid+'&type=subscription'}}"
+			bindtap="toPage">
+			<view class="menu_list_item">我的关注</view>
+
+		</view>
+		<view class="menu_list_group"
+			data-url="{{'/pages/drafts/index?unionid='+userInfo.unionid+'&appid='+userInfo.appid}}" bindtap="toPage">
+			<view class="menu_list_item">草稿箱</view>
+		</view>
+
+	</view>
+	<view class="tabbar">
+		<tabbar bindchange="tabChange" choose_index="{{choose_index}}"></tabbar>
+	</view>
+</view>
+<map-auth show="{{diaShow}}" bindgetUserInfo="getUserInfo" />
+<view class="loading" wx:if="{{isLoading}}">
+	<image class="img" src="https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/iconBox/loading.gif"></image>
+	<view class="text">海风吹啊吹</view>
+</view>

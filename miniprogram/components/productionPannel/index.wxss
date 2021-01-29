@@ -1,0 +1,75 @@
+/* components/productionPannel/index.wxss */
+.production_pannel {
+  padding: 30rpx 40rpx 30rpx 20rpx;
+  background-color: #fff;
+}
+
+.auth_pannel {
+  display: flex;
+  align-items: center;
+}
+
+.auth_avatar {
+  width: 70rpx;
+  margin-right: 10rpx;
+}
+
+.auth_avatar image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+}
+
+.auth_name {
+  color: #576b95;
+  font-size: 32rpx;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  line-height: 72rpx;
+  font-weight: bold;
+}
+
+.production_container {
+  padding-left: 80rpx;
+
+}
+
+.bottom_pannel {
+  display: flex;
+  align-items: center;
+  padding-top: 20rpx;
+
+}
+
+.bottom_pannel_item {
+  margin-right: 30rpx;
+}
+
+.bottom_pannel_item.date,
+.bottom_pannel_item.traffic {
+  color: #888;
+  font-size: 22rpx;
+}
+
+.bottom_pannel_item.traffic {
+  display: flex;
+  align-items: center;
+}
+
+.bottom_pannel_item.traffic image {
+  width: 28rpx;
+  height: auto;
+  display: block;
+  margin-right: 10rpx;
+}
+
+.bottom_pannel_item.delete {
+  color: #f88070;
+  font-size: 28rpx;
+}
+
+.bottom_pannel_item.async {
+  color: #4d94ff;
+  font-size: 28rpx;
+}

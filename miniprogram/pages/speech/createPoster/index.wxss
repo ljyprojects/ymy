@@ -1,0 +1,123 @@
+/* pages/course/posterPage.wxss */
+page {
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.poster_page {
+
+  width: 100%;
+}
+
+canvas {
+  transform: scale(.5, .5) translateX(-414px) translateY(-736px);
+}
+
+.image_page {
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  padding: 20rpx 40rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+image {
+  width: 90%;
+  height: auto;
+  display: block;
+  color: rgb(97, 97, 97);
+
+}
+
+.btn_group {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  margin-top: 20rpx;
+  text-align: center;
+}
+
+.btn_item {
+  width: 120rpx;
+  border: 1px solid #07C160;
+  color: #07C160;
+  padding: 20rpx;
+  border-radius: 4px;
+  margin-right: 20rpx;
+  background-color: #fff;
+
+}
+
+.btn {
+  box-sizing: border-box;
+  padding: 20rpx 20rpx;
+  background-color: #07C160;
+  color: #FFF;
+  border-radius: 4px;
+
+  flex: 1;
+}/* pages/course/posterPage.wxss */
+page {
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.poster_page {
+
+  width: 100%;
+}
+
+canvas {
+  transform: scale(.5, .5) translateX(-414px) translateY(-736px);
+}
+
+.image_page {
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  padding: 20rpx 40rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+image {
+  width: 90%;
+  height: auto;
+  display: block;
+  color: rgb(97, 97, 97);
+
+}
+
+.btn_group {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  margin-top: 20rpx;
+  text-align: center;
+}
+
+.btn_item {
+  width: 120rpx;
+  border: 1px solid #07C160;
+  color: #07C160;
+  padding: 20rpx;
+  border-radius: 4px;
+  margin-right: 20rpx;
+  background-color: #fff;
+
+}
+
+.btn {
+  box-sizing: border-box;
+  padding: 20rpx 20rpx;
+  background-color: #07C160;
+  color: #FFF;
+  border-radius: 4px;
+
+  flex: 1;
+}

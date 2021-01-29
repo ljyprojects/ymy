@@ -1,0 +1,19 @@
+<!--pages/messageCenter/index.wxml-->
+<view class="message_page" wx:if="{{list.length}}">
+  <view class="message_item" wx:for="{{list}}" wx:key="_id" data-name="{{item.nickName}}" data-unionid="{{item.unionid}}" data-appid="{{item.appid}}"
+    bindtap="toChatRoom">
+    <view class="avatar">
+      <image mode="widthFix" src="{{item.avatar}}"></image>
+    </view>
+    <view class="content">
+      <view class="nick_name">{{item.nickName}}</view>
+      <view class="msg">{{item.msgType=='text'?item.textContent:'[图片]'}}</view>
+    </view>
+    <view class="send_time">{{item.time}}</view>
+  </view>
+</view>
+<view class="default_page" wx:else>没有任何消息~~~</view>
+<view class="tabbar">
+	<tabbar bindchange="tabChange" choose_index="{{choose_index}}"></tabbar>
+</view>
+<map-auth show="{{diaShow}}" bindgetUserInfo="getUserInfo" />

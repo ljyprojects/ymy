@@ -1,0 +1,13 @@
+/* pages/drafts/index.wxss */
+page {
+  background-color: #f6f6f6;
+}
+.default_page{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9c9c9c;
+  font-size: 50rpx;
+  font-weight: bold;
+}

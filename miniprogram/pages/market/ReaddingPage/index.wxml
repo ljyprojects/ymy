@@ -1,0 +1,50 @@
+<!--pages/market/ReaddingPage.wxml-->
+<view class="readding_page">
+
+<view class="page_content">
+  <scroll-view scroll-y="true">
+    <view class="page_title">{{pageDetail.title}}</view>
+    <view class="content"><text selectable="true">{{pageDetail.content}}</text></view>
+  </scroll-view>
+</view>
+<view class="record_pannel">
+  <view class="bgmBox">
+    <view class="bgmicon {{isPlayBgm?'animation':''}}" catchtap="changeBgmPannel">
+      <image mode="widthFix" src="https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/fileicon/音乐.png"></image>
+    </view>
+  </view>
+  <view class="timer {{isRecording?'active':''}}">{{durationMsg}}</view>
+  <view class="btn_group">
+    <view class="btn_group_item record" wx:if="{{tempVoice&&!isRecording}}">
+      <image wx:if="{{!isPlay}}" bindtap="playVoice" style="width:80rpx;height:80rpx;"
+        src="../../../images/play.png"></image>
+      <image wx:if="{{isPlay}}" bindtap="stopVoice" style="width:80rpx;height:80rpx;"
+        src="../../../images/stop1.png"></image>
+      <view class="btnview_msg">{{isPlay?'暂停':'试听'}}</view>
+    </view>
+    <view class="btn_group_item center">
+      <image mode="widthFix" wx:if="{{!isRecording}}" bindtap="startRecord"
+        src="../../../images/record.png">
+      </image>
+      <image mode="widthFix" wx:if="{{isRecording}}" bindtap="stopRecord"
+        src="../../../images/stop.png">
+      </image>
+      <view class="btnview_msg">{{tempVoice?'重录':isRecording?'停止':'录音'}}</view>
+    </view>
+
+    <view class="btn_group_item next" wx:if="{{tempVoice&&!isRecording}}">
+      <image bindtap="submit" style="width:80rpx;height:80rpx;"
+        src="../../../images/ok1.png"></image>
+      <view class="btnview_msg">保存</view>
+    </view>
+  </view>
+
+</view>
+</view>
+<view class="bgm_list_pannel" wx:if="{{showBgmPannel}}" catchtap="changeBgmPannel">
+<view class="bgm_list">
+  <view class="bgm_list_item" catchtap="chooseBgm" data-title="" data-url="">无需背景音乐</view>
+  <view class="bgm_list_item {{subscript==index?'select':''}}" catchtap="chooseBgm" data-index="{{index}}"
+    data-title="{{item.title}}" data-url="{{item.bgmHttp}}" wx:for="{{BGM}}" wx:key="_id">{{item.title}}</view>
+</view>
+</view>

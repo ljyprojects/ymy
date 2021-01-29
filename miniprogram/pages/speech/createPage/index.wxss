@@ -1,0 +1,83 @@
+/* pages/market/createReadPage.wxss */
+page {
+  background-color: #fff;
+}
+
+.list_item {
+  color: #666;
+}
+
+.list_item .list_item_body {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 20rpx;
+  font-size: 28rpx;
+  border-bottom: 1px solid #f6f6f6;
+}
+
+.list_item_body_value {
+  flex: 1;
+  margin-left: 20rpx;
+}
+
+.list_item_body_value input {
+  font-size: 26rpx;
+}
+
+.list_item_sub_menu {
+  padding: 0 20rpx 20rpx;
+  background-color: #fff;
+}
+
+.list_item_sub_menu textarea {
+  background-color: #f6f6f6;
+  width: 100%;
+  height: 400rpx;
+  padding: 10rpx 20rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  border-radius: 4px;
+}
+
+.btn_group {
+  padding: 20rpx;
+}
+
+.btn_group_item {
+  border: 1px solid #ff4516;
+  padding: 10rpx 20rpx;
+  margin-top: 20rpx;
+  text-align: center;
+  color: #ff4516;
+  border-radius: 4px;
+}
+
+.confirm {
+  background-color: #ff4516;
+  color: #fff;
+}
+
+.classify_list_title {
+  font-size: 28rpx;
+}
+
+.classify_list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.classify_list_item {
+  border: 1px solid #ff4516;
+  color: #ff4516;
+  padding: 6rpx 10rpx;
+  font-size: 24rpx;
+  margin: 10rpx 20rpx;
+  border-radius: 4px;
+}
+
+.classify_list_item.select {
+  background-color: #ff4516;
+  color: #fff;
+}

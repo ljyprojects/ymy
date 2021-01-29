@@ -1,0 +1,4 @@
+<include src="../personalPage/index.wxml"></include>
+<view class="tabbar">
+	<tabbar bindchange="tabChange" choose_index="{{choose_index}}"></tabbar>
+</view>

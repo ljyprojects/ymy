@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/warehouse/mine/index",
+    "pages/warehouse/defaultPage/index",
+    "pages/warehouse/personalPage/index",
+    "pages/warehouse/FansList/index",
+    "pages/speech/speechDetial/index",
+    "pages/speech/speechAdd/index",
+    "pages/market/square/index",
+    "pages/market/calssify/index",
+    "pages/speech/createPoster/index",
+    "pages/speech/createPage/index",
+    "pages/market/ReaddingPage/index",
+    "pages/market/submitReadding/index",
+    "pages/mine/index",
+    "pages/mine/setting/index",
+    "pages/mine/cutImage/index",
+    "pages/addressbook/index",
+    "pages/drafts/index",
+    "pages/chatRoom/index",
+    "pages/messageCenter/index",
+    "pages/EshonTest/index"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#2f3336",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": ""
+  },
+  "requiredBackgroundModes": [
+    "audio",
+    "location"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于展示位置"
+    }
+  },
+  "sitemapLocation": "sitemap.json"
+}

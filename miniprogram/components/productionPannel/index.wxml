@@ -1,0 +1,21 @@
+<view class="production_pannel">
+  <view class="auth_pannel">
+    <view class="auth_avatar">
+      <image mode="widthFix" src="{{currentData.userInfo.avatarUrl}}"></image>
+    </view>
+    <view class="auth_name">{{currentData.userInfo.nickName}}</view>
+  </view>
+  <view class="production_container" data-type="{{currentData.type}}" data-id="{{currentData._id}}" bindtap="toDetail">
+    <speech-pannel speechData="{{currentData}}" />
+    <view class="bottom_pannel">
+      <view class="bottom_pannel_item date">{{currentData.time}}</view>
+      <view class="bottom_pannel_item traffic" wx:if="{{currentData.traffic}}">
+        <image mode="widthFix"  src="https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/iconBox/view.png"></image>
+        <text>{{currentData.traffic.length}}</text>
+      </view>
+      <view class="bottom_pannel_item delete" wx:if="{{isAdmin}}" catchtap="delete" data-id="{{currentData._id}}">删除
+      </view>
+      <view class="bottom_pannel_item async"  catchtap="asyncClick" wx:if="{{showAsyncBtn}}">公开</view>
+    </view>
+  </view>
+</view>

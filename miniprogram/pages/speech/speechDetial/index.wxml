@@ -24,8 +24,8 @@
       </view>
       <!-- 如果有上传图片 -->
       <view class="li-imgs" style="width:100%;margin-top:0;" wx:if="{{wallData.images.length>0}}">
-        <swiper class="swiper" indicator-dots="{{wallData.images.lenght == 0 ? true : false}}">
-          <block wx:for="{{wallData.images}}" wx:key="index" wx:for-item="it">
+        <swiper class="swiper" indicator-dots="{{wallData.images.length == 0 ? true : false}}">
+          <block wx:for="{{wallData.imagesHttp}}" wx:key="index" wx:for-item="it">
             <swiper-item>
               <view data-playState="pause" class="status_btn" wx:if="{{!isPlay}}" catchtap="audioPlay">
                 <image mode="widthFix" src="https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/vioceIcon/play.png">

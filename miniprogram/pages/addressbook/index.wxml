@@ -1,4 +1,4 @@
-<view class="member_list" wx:if="{{ members}}">
+<view class="member_list" wx:if="{{ showMembers}}">
   <!-- 外部搜索 -->
   <view class='wrapper'>
     <view class='list-warpper'>

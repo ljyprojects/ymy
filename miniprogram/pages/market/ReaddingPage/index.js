@@ -74,8 +74,12 @@ Page({
     backgroundAudioManager.title = e.currentTarget.dataset.title
 
     backgroundAudioManager.play()
-    backgroundAudioManager.onWaiting(() => {
-      console.log('加载中')
+    backgroundAudioManager.onEnded(()=>{
+      console.log('结束了')
+      backgroundAudioManager.src=this.data.bgmUrl,
+      backgroundAudioManager.title='背景音乐'
+      backgroundAudioManager.seek(5)
+      backgroundAudioManager.play()
     })
     this.setData({
       isPlayBgm: true,

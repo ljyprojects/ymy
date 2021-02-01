@@ -71,13 +71,6 @@ Page({
       userInfo.appid = res.result.appid
       userInfo.openid = res.result.openid
       userInfo.unionid = res.result.unionid
-      userInfo.Fans = []
-      userInfo.subscription = []
-      userInfo.createPoster = []
-      userInfo.forumID = `forumID_${res.result.unionid}`
-      userInfo.motto = ''
-      userInfo.views = 0
-      userInfo.viewsOfMembers = []
       console.log(userInfo)
       wxCloud.callFunction({
         name: 'userInfo',

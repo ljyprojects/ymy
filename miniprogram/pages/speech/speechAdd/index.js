@@ -276,9 +276,14 @@ Page({
     backgroundAudioManager.title = e.currentTarget.dataset.title
     backgroundAudioManager.play()
     backgroundAudioManager.onEnded(() => {
-      this.setData({
-        audition: false
-      })
+      console.log('播放结束了')
+     backgroundAudioManager.src=this.data.bgm
+     backgroundAudioManager.title=this.data.title
+      backgroundAudioManager.seek(5)
+      backgroundAudioManager.play()
+      // this.setData({
+      //   audition: false
+      // })
     })
   },
   onShow: function () {

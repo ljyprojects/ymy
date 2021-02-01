@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    showMembers:true,
     choose_index: 3,
     config: {
       search: true, // 是否开启搜索
@@ -206,6 +207,13 @@ Page({
         }
       }).then(res => {
         console.log('结果==>', res)
+        if(!res.result.list.length){
+          this.setData({
+            showMembers:false
+          })
+          wx.hideLoading()
+          return
+        }
         res.result.list.forEach(elem => {
           elem.pinyin = pinyin.getFirstLetter(elem.userInfo.nickName)
           elem.time = this.formatDate(elem.time)

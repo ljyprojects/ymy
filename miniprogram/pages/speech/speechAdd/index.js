@@ -16,6 +16,7 @@ const app = getApp();
 let timer = null
 Page({
   data: {
+    locationMsg: '点击定位',
     isCreatePoster: true,
     showSystemImgPannel: false,
     currentDuration: '00:00',
@@ -76,6 +77,34 @@ Page({
           locationMsg: '定位失败'
         })
       },
+    })
+  },
+  locationClick() {
+    wx.showLoading({
+      title: '正在处理',
+    })
+    wx.getLocation({
+      type: 'gcj02',
+      success: res => {
+        console.log('定位==>', res)
+        let {
+          latitude,
+          longitude
+        } = res
+        let location = {
+          latitude,
+          longitude
+        }
+        this.setData({
+          location
+        })
+        this.getLocation(location)
+      },
+      fail: err => {
+        this.setData({
+          locationMsg: '定位失败'
+        })
+      }
     })
   },
   radioChange() {
@@ -277,8 +306,8 @@ Page({
     backgroundAudioManager.play()
     backgroundAudioManager.onEnded(() => {
       console.log('播放结束了')
-     backgroundAudioManager.src=this.data.bgm
-     backgroundAudioManager.title=this.data.title
+      backgroundAudioManager.src = this.data.bgm
+      backgroundAudioManager.title = this.data.title
       backgroundAudioManager.seek(5)
       backgroundAudioManager.play()
       // this.setData({
@@ -287,29 +316,7 @@ Page({
     })
   },
   onShow: function () {
-    wx.getLocation({
-      type: 'gcj02',
-      success: res => {
-        console.log('定位==>', res)
-        let {
-          latitude,
-          longitude
-        } = res
-        let location = {
-          latitude,
-          longitude
-        }
-        this.setData({
-          location
-        })
-        this.getLocation(location)
-      },
-      fail: err => {
-        this.setData({
-          locationMsg: '定位失败'
-        })
-      }
-    })
+
   },
   onUnload() { // 页面卸载后
     wx.setKeepScreenOn({
@@ -538,7 +545,6 @@ Page({
     let imagesHttp = []
     if (imgs && imgs.length) {
       console.log(imgs)
-
       imgs.forEach((elem, index) => {
         imagesHttp[index] = changeImageUrl(elem)
       });
@@ -558,7 +564,7 @@ Page({
           wallData: {
             openGid: [],
             type: 'speech',
-            openid:that.data.userInfo.openid,
+            openid: that.data.userInfo.openid,
             unionid: that.data.userInfo.unionid,
             appid: that.data.userInfo.appid,
             userInfo: that.data.userInfo,
@@ -584,7 +590,6 @@ Page({
       return
     }
     if (this.data.collectionName == "chest") {
-
       wxCloud.callFunction({
         name: 'chest',
         data: {
@@ -626,16 +631,70 @@ Page({
               url: '/pages/warehouse/mine/index',
             })
           }
-
-
-
         },
         fail: err => {
           console.log(err)
         }
       })
     }
+  },
+  imgCheck(imgs) {
+    return new Promise((resolve, reject) => {
+      let num = 0
 
+      imgs.forEach(elem => {
+        wxCloud.callFunction({
+          name: 'msgCheck',
+          data: {
+            type: 'img',
+            media: elem
+          }
+        }).then(res => {
+          if (res.result.errCode !== 0) {
+            resolve({
+              status: 'error',
+              msg: '图片违规'
+            })
+          }
+          num += 1
+          if (num >= imgs.length) {
+            resolve({
+              status: 'ok',
+              msg: '图片合格'
+            })
+          }
+        })
+      });
+    })
+  },
+  textCHeck(msg) {
+    return new Promise((resolve, reject) => {
+      wxCloud.callFunction({
+        name: 'msgCheck',
+        data: {
+          type: 'text',
+          content: msg
+        }
+      }).then(res => {
+        resolve(res)
+        if (res.result.errCode !== 0) {
+          resolve({
+            status: 'error',
+            msg: '内容违规'
+          })
+        } else {
+          resolve({
+            status: 'ok',
+            msg: '内容合格'
+          })
+        }
+      }).catch(err => {
+        resolve({
+          status: 'error',
+          msg: '内容违规'
+        })
+      })
+    })
   },
 
   subOk: async function (e) { // 上传开始
@@ -666,11 +725,46 @@ Page({
     this.setData({
       disabled: true
     })
+    wx.showLoading({
+      title: '正在处理',
+    })
+    if (this.data.title) {
+      let textCheck = await this.textCHeck(this.data.title)
+      console.log(textCheck)
+
+      if (textCheck.status == 'error') {
+        wx.hideLoading({
+          success: (res) => {},
+        })
+        wx.showToast({
+          title: '标题内容违规',
+          icon: 'none'
+        })
+        this.setData({
+          disabled: false
+        })
+        return
+      }
+    }
     if (this.data.tmpImgs.length != 0) {
       wx.showLoading({
         title: '数据上传中',
         mask: true
       })
+      let imgCheck = await this.imgCheck(this.data.tmpImgs)
+      if (imgCheck.status == 'error') {
+        wx.showToast({
+          title: '图片涉嫌违规',
+          icon: 'none'
+        })
+        wx.hideLoading({
+          success: (res) => {},
+        })
+        this.setData({
+          disabled: false
+        })
+        return
+      }
       this.updateImgs()
       console.log("有图片")
     } else {
@@ -689,7 +783,7 @@ Page({
     })
   },
   onHide: function () {
-    
+
   },
   onUnload: function () {
     backgroundAudioManager.stop();

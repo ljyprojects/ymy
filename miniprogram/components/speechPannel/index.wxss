@@ -2,14 +2,14 @@
 .speech_title {
   color: #333;
   padding-bottom: 10rpx;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  /* overflow: hidden;
+  text-overflow: ellipsis; */
   word-break: break-all;
-  display: -webkit-box;
+  /* display: -webkit-box; */
   font-size: 28rpx;
-  line-height: 36rpx;
+  /* line-height: 36rpx;
   -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: vertical; */
 }
 
 .speech_cover_img {

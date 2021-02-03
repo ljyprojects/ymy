@@ -155,6 +155,8 @@
   padding: 40rpx;
   box-sizing: border-box;
   background-color: #fff;
+  padding-bottom: 60rpx;
+  border-bottom: 1px solid #ddd;
 }
 
 .system_video_pannel .title {

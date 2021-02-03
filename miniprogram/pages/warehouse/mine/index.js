@@ -257,6 +257,7 @@ Page({
                 method: 'get',
                 type: 'own',
                 unionid: res.result.unionid,
+                appid: res.result.appid
               }
             }).then(res => {
               console.log('获取用户信息==>', res)
@@ -489,8 +490,8 @@ Page({
         data: {
           method: 'get',
           collectionName: 'system_video',
-          where:{
-            type:'llh'
+          where: {
+            appid:this.data.userInfo.appid
           },
           limit: 2
         }

@@ -37,7 +37,7 @@
 		<view class="btn_group_item" bindtap="chooseImage">从相册选择</view>
 	</view>
 	<view class="viewInput">
-		<textarea bindinput="onChange" placeholder-style="color:#333;" placeholder="请输入标题"></textarea>
+		<textarea bindinput="onChange" maxlength="30" placeholder-style="color:#333;" placeholder="请输入标题"></textarea>
 	</view>
 	<view class="system_imgs">
 		<view class="system_imgs_title" wx:if="{{showSystemImgPannel}}">选图推荐</view>
@@ -49,7 +49,7 @@
 		</view>
 	</view>
 	<view class="pannel">
-		<view class="location_pannel">
+		<view class="location_pannel" bindtap="locationClick">
 			<view class="location_pannel_title">
 				<image mode="widthFix" src="https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/systemIcon/location.png"></image>
 			</view>
@@ -82,7 +82,8 @@
 			<view class="content">{{item.content}}</view>
 		</view>
 		<view class="recommend_item" catchtap="toMarket">
-			<image class="more" mode="widthFix" src="https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/systemIcon/Right-11.png">
+			<image class="more" mode="widthFix"
+				src="https://6c6c-llhui-11qo1-1302848655.tcb.qcloud.la/systemIcon/Right-11.png">
 			</image>
 		</view>
 	</view>
